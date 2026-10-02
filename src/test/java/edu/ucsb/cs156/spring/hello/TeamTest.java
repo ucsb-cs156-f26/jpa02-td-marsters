@@ -2,6 +2,8 @@ package edu.ucsb.cs156.spring.hello;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,4 +36,17 @@ public class TeamTest {
         assertFalse(team.equals(""));
     }
 
+    @Test 
+    public void equals_evaluates_equivalency_correctly() {
+        team.addMember("Tom");
+        Team test = new Team();
+        test.setName(team.getName());
+        test.setMembers(team.getMembers());
+        assertTrue(team.equals(test));
+    }
+
+    @Test
+    public void toString_returns_correct_String() {
+        assertEquals(team.toString(), "Team(name=test-team, members=[])");
+    }
 }
