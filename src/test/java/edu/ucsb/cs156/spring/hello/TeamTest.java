@@ -1,7 +1,7 @@
 package edu.ucsb.cs156.spring.hello;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +16,22 @@ public class TeamTest {
 
     @Test
     public void getName_returns_correct_name() {
-       assert(team.getName().equals("test-team"));
+        assert(team.getName().equals("test-team"));
     }
 
-   
-    // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
-    // 100% mutation coverage (all mutants timed out or killed)
+    @Test 
+    public void equals_evaluates_true_case_correctly() {
+        assertTrue(team.equals(team));
+    }
+
+    @Test 
+    public void equals_evaluates_false_case_correctly() {
+        assertFalse(team.equals(new Team()));
+    }
+    
+    @Test 
+    public void equals_evaluates_instance_difference_correctly() {
+        assertFalse(team.equals(""));
+    }
 
 }
