@@ -49,4 +49,9 @@ public class TeamTest {
     public void toString_returns_correct_String() {
         assertEquals(team.toString(), "Team(name=test-team, members=[])");
     }
+
+    @Test
+    public void hashCode_returns_correct_integer() {
+        assertEquals(team.hashCode(), team.getName().hashCode() | team.getMembers().hashCode());
+    }
 }
