@@ -5,9 +5,12 @@ import java.lang.reflect.Modifier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DeveloperTest {
+
+    Team team;
 
     @Test
     public void testPrivateConstructor() throws Exception {
@@ -27,6 +30,26 @@ public class DeveloperTest {
     @Test 
     public void getGithubId_returns_correct_id() {
         assertEquals("td-marsters", Developer.getGithubId());
+    }
+
+    @BeforeEach 
+    public void setup_tested_team() {
+        team = new Team("f26-09");
+        team.addMember("Tom M.");
+        team.addMember("Amaya B.");
+        team.addMember("Aryan V.");
+        team.addMember("Jerry Y.");
+        team.addMember("Bogdan S.");
+    }
+
+    @Test 
+    public void getTeam_returns_correct_team_name() {
+        assertEquals(team.getName(), Developer.getTeam().getName());
+    }
+
+    @Test 
+    public void getTeam_returns_correct_team_members() {
+        assertEquals(team.getMembers(), Developer.getTeam().getMembers());
     }
 
 }
