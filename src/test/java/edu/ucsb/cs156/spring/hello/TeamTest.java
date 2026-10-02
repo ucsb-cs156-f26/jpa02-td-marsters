@@ -41,6 +41,7 @@ public class TeamTest {
         team.addMember("Tom");
         Team test = new Team();
         test.setName(team.getName());
+        assertFalse(team.equals(test));
         test.setMembers(team.getMembers());
         assertTrue(team.equals(test));
     }
